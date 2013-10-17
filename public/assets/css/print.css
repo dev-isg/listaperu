@@ -1,0 +1,51 @@
+/*Overwrite fundation Style*/
+div:not(.reveal-modal) {display: block; } 
+
+/*Reset Style*/
+body {margin:0; padding:0; line-height: 1.4em !important; word-spacing:1px; letter-spacing:0.2px; font: 13px Arial, Helvetica,"Lucida Grande", serif; color: #000 !important; text-shadow:none !important; }
+
+/*Remove Element*/
+#swipe_right, #swipe_left, #m_search, .mobile_button_wrapper, .mobile_button_wrapper a, 
+[class^="icon-"]:before, [class*=" icon-"]:before, a [class^="icon-"], a [class*=" icon-"], i, #navigation, #v_weather_panel_container, 
+.site_search, .nav_container, .welcome_container, .site_search, #header_search_form, #search_search_form, .weather_panel_container, .footer, #footer_settings, #footer_share, .footer_main_links, .visitor_weather_panel, .close_modal, .header_search, .home_search, .search_search, #p_services .site_button, a.map_it { display:none !important;}
+
+/* Show URL */
+a:link, a:visited {background: transparent; color:#333; text-decoration:none;}
+a:link[href^="http://"]:after, a[href^="http://"]:visited:after {content: " (" attr(href) ") ";}
+a[href^="http://"] {color:#000;} 
+
+.site_title h1 img{ width:260px; height:80px; display:block; }
+.site_title h1 a, .site_title h1 a:visited{ text-indent:-9999px;}
+.site_tagline{ padding-left:0 !important;}
+
+/** Erase button icon **/
+.link_button:before, .service_button:before { background:none;}
+
+/*ul li, ol li { list-style:disc;}
+*/
+.panel i{font-size:0.1em; height:0 !important;}
+
+h1 { display:block; font-size:20px;}
+
+h2{ border-bottom: solid #000 1px; font-size:16px;}
+
+.row .large-1, .row .large-2, .row .large-3, .row .large-4, .row .large-5, .row .large-6, .row .large-7, .row .large-8, .row .large-9, .row .large-10, .row .large-11, .row .large-12 { width:100%;}
+
+.panel, .panel.small, .panel.large, p, a { min-height: 0 !important; margin:0 !important; padding: 0 !important;}
+
+/** Show hidden text **/
+.show_hide, .has-tip, .answer{ display:block !important;}
+
+.panel, .modal, .column, .columns { display:block; float:none;}
+
+#modal{ clear:both; border: none; border-top:1px solid #000; width:100% !important; margin-left:0 !important; padding-left:0 !important;}
+
+#swipe_container{ overflow:visible;}
+
+.reveal-modal{ position:relative; width:100%; left:0;}
+
+/** home bar icons **/
+.text-center{ text-align:left !important;}
+
+.recommended_services.row .large-6 { width:100%;}
+.header .site_title h1 a { font-size:24px; text-indent:0; background:none;}

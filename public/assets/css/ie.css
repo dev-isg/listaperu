@@ -1,0 +1,445 @@
+/* The Grid ---------------------- */
+.lt-ie9 .row { width: 940px; max-width: 100%; min-width: 768px; margin: 0 auto; }
+.lt-ie9 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
+.lt-ie9 .row.large-collapse .column, 
+.lt-ie9 .row.large-collapse .columns { padding: 0; }
+.lt-ie9 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
+.lt-ie9 .row .row.large-collapse { margin: 0; }
+ 
+.lt-ie9 .column, .columns { float: left; min-height: 1px; padding: 0 15px; position: relative; }
+.lt-ie9 .column.large-centered, .columns.large-centered { float: none; margin: 0 auto; }
+ 
+.lt-ie9 [class*="column"] + [class*="column"]:last-child { float: right; }
+.lt-ie9 [class*="column"] + [class*="column"].end { float: left; }
+ 
+.lt-ie9 .large-1, 
+.lt-ie9 .row .large-1 { width: 8.33333%; }
+ 
+.lt-ie9 .large-2, 
+.lt-ie9 .row .large-2 { width: 16.66667%; }
+ 
+.lt-ie9 .large-3, 
+.lt-ie9 .row .large-3 { width: 25%; }
+ 
+.lt-ie9 .large-4, 
+.lt-ie9 .row .large-4 { width: 33.33333%; }
+ 
+.lt-ie9 .large-5, 
+.lt-ie9 .row .large-5 { width: 41.66667%; }
+ 
+.lt-ie9 .large-6, 
+.lt-ie9 .row .large-6 { width: 50%; }
+ 
+.lt-ie9 .large-7, 
+.lt-ie9 .row .large-7 { width: 58.33333%; }
+ 
+.lt-ie9 .large-8, 
+.lt-ie9 .row .large-8 { width: 66.66667%; }
+ 
+.lt-ie9 .large-9, 
+.lt-ie9 .row .large-9 { width: 75%; }
+ 
+.lt-ie9 .large-10, 
+.lt-ie9 .row .large-10 { width: 83.33333%; }
+ 
+.lt-ie9 .large-11, 
+.lt-ie9 .row .large-11 { width: 91.66667%; }
+ 
+.lt-ie9 .large-12,
+.lt-ie9 .row .large-12 { width: 100%; }
+ 
+.lt-ie9 .row .large-offset-1 { margin-left: 8.33333%; }
+.lt-ie9 .row .large-offset-2 { margin-left: 16.66667%; }
+.lt-ie9 .row .large-offset-3 { margin-left: 25%; }
+.lt-ie9 .row .large-offset-4 { margin-left: 33.33333%; }
+.lt-ie9 .row .large-offset-5 { margin-left: 41.66667%; }
+.lt-ie9 .row .large-offset-6 { margin-left: 50%; }
+.lt-ie9 .row .large-offset-7 { margin-left: 58.33333%; }
+.lt-ie9 .row .large-offset-8 { margin-left: 66.66667%; }
+.lt-ie9 .row .large-offset-9 { margin-left: 75%; }
+.lt-ie9 .row .large-offset-10 { margin-left: 83.33333%; }
+ 
+.lt-ie9 .pull-2 { right: 16.66667%; }
+.lt-ie9 .pull-3 { right: 25%; }
+.lt-ie9 .pull-4 { right: 33.33333%; }
+.lt-ie9 .pull-5 { right: 41.66667%; }
+.lt-ie9 .pull-6 { right: 50%; }
+.lt-ie9 .pull-7 { right: 58.33333%; }
+.lt-ie9 .pull-8 { right: 66.66667%; }
+.lt-ie9 .pull-9 { right: 75%; }
+.lt-ie9 .pull-10 { right: 83.33333%; }
+ 
+.lt-ie9 .push-2 { left: 16.66667%; }
+.lt-ie9 .push-3 { left: 25%; }
+.lt-ie9 .push-4 { left: 33.33333%; }
+.lt-ie9 .push-5 { left: 41.66667%; }
+.lt-ie9 .push-6 { left: 50%; }
+.lt-ie9 .push-7 { left: 58.33333%; }
+.lt-ie9 .push-8 { left: 66.66667%; }
+.lt-ie9 .push-9 { left: 75%; }
+.lt-ie9 .push-10 { left: 83.33333%; }
+ 
+/* Nicolas Gallagher's micro clearfix */
+.lt-ie9 .row { *zoom: 1; }
+.lt-ie9 .row:before, .row:after { content: " "; display: table; }
+.lt-ie9 .row:after { clear: both; }
+
+.lt-ie9 .swipe_panel > .row {
+	float: none !important;
+	width: 940px !important;
+}
+
+.lt-ie9 .site_title {
+	height: 80px !important;
+	background: none;
+	background-image: url(../images/stateseal.png) !important;
+	background-repeat: no-repeat;
+}
+
+.lt-ie9 .site_title h1 {
+	margin-left: 84px !important;
+}
+
+.lt-ie9 .tile {
+	margin: 0.5em 0;
+}
+
+.lt-ie9 .tile .timg {
+	display: none;
+}
+
+.lt-ie9 .swipe_container {
+	margin-top: 3em;
+}
+
+.lt-ie9 .navigation li {
+	margin-left: 20px;
+}
+
+.lt-ie9 .navigation li a {
+	color: #000;
+	padding: 0;
+	margin-top: -20px;
+}
+
+.lt-ie9 .static-content {
+	margin-top: 3em;
+}
+
+.lt-ie9 .swipe_panel h2 {
+	color: #000;
+}
+
+.lt-ie9 .tile.large > a {
+	min-height: 14.8em;
+}
+
+.lt-ie9 .service_button {
+	padding-left: 20px;
+}
+
+.lt-ie9 .service_button:before {
+	background: none;
+}
+
+.lt-ie9 .link_button {
+	padding-left: 20px;
+}
+
+.lt-ie9 .link_button:before {
+	background: none;
+}
+
+.lt-ie9 .tier2 {
+	margin-top: 4em;
+}
+
+.lt-ie9 .tier2 h2 i {
+	color: #000;
+}
+
+.lt-ie9 .open_in_data_map {
+	display: none;
+}
+
+.lt-ie9 .footer a {
+	color: #FFF;
+}
+
+.lt-ie9 #footer_more {
+	display: none;
+}
+
+.lt-ie9 .weather_panel_container {
+	display: none;
+}
+
+.lt-ie9 .h_date {
+	display: none;
+}
+
+.lt-ie9 .governor:after, .lt-ie9 .ltgovernor:after, .lt-ie9 .senator1:after, .lt-ie9 .senator2:after, .lt-ie9 .rep1:after, .lt-ie9 .rep2:after, .lt-ie9 .senatepres:after, .lt-ie9 .housespeaker:after {
+	background: none !important;
+}
+
+.lt-ie9 .wp_weather_container {
+	background: #517AA6;
+}
+
+.lt-ie9 .buorg {
+	top: -26px !important;
+}
+
+.lt-ie9 #p_services .filter, .lt-ie9 #p_services .filter_services{ display:none; }
+
+.lt-ie9 #camping_no_content .island_camping {
+	width: 96px;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	list-style-type: none;
+}
+
+.lt-ie9 #camping_no_content .island_camping > div:first-child {
+	background: #915528;
+}
+
+.lt-ie9 #camping_no_content .island_back {
+	display: none;
+}
+
+.lt-ie9 .myhawaii_tile {
+	margin-bottom: 20px;
+}
+
+.lt-ie9 .timeline_month{ float: left; display: inline-block;}
+.lt-ie9 .timeline_month:hover { background-color:#D6D6D6;}
+.lt-ie9 .timeline_month.current:hover{ background-color:#EBBE47; }
+.lt-ie9 .timeline_ie{ float: left; padding-top: 10px; display: inline-block;}
+.lt-ie9 .tilemine_con {clear: both; width: 100%;}
+.lt-ie9 .timeline .has-tip:hover,.lt-ie9 .timeline .has-tip:focus{ color:#333333;}
+.lt-ie9 .timeline .has-tip:hover, .lt-ie9 .timeline .has-tip:hover{cursor: default;}
+
+.ie7 .timeline_month .timeline_t span {display: inline-block; padding-right: 10px;}
+.ie7 .timeline_month .timeline_t.timeline_year {font-size: .7em; top:30%;padding-bottom: 10px; display: block;}
+.ie7 .timeline_ie { width: 70%;}
+
+.ie7 .myhawaii_tile.columns{
+    margin-right: -15px ;
+    margin-left: -15px ;
+    display:-moz-inline-stack;
+    display:inline-block;
+    zoom:1;
+    *display:inline;
+}
+
+.ie7 .myhawaii_login .left {
+	width: 45% !important;
+}
+
+.ie7 .navigation {
+	position: absolute !important;
+	top: -60px !important;
+	right: -300px !important;
+}
+
+.ie7 .header_search {
+	top: 3.5em !important;
+}
+
+.ie7 .tile {
+	width: 30% !important;
+	margin: 0.2em;
+}
+
+/* .ie7 .myhawaii_tile.large-1 {
+	width: 7.91%;
+}
+
+.ie7 .myhawaii_tile.large-2 {
+	width: 15.82%;
+}
+
+.ie7 .myhawaii_tile.large-3 {
+	width: 23.73%;
+}
+
+.ie7 .myhawaii_tile.large-4 {
+	width: 31.64%;
+}
+
+.ie7 .myhawaii_tile.large-5 {
+	width: 39.55%;
+}
+
+.ie7 .myhawaii_tile.large-6 {
+	width: 47.46%;
+}
+
+.ie7 .myhawaii_tile.large-7 {
+	width: 55.37%;
+}
+
+.ie7 .myhawaii_tile.large-8 {
+	width: 63.28%;
+}
+
+.ie7 .myhawaii_tile.large-9 {
+	width: 71.19%;
+}
+
+.ie7 .myhawaii_tile.large-10 {
+	width: 79.1%;
+}
+
+.ie7 .myhawaii_tile.large-11 {
+	width: 87.01%;
+}
+
+.ie7 .myhawaii_tile.large-12 {
+	width: 94.92%;
+} */
+
+.ie7 .home_tiles .tile {
+	width: 30%;
+	margin: 20px 0;
+}
+
+.ie7 .home_tiles > .large-12 {
+	width: 100% !important;
+}
+
+.ie7 .row-bar {
+	background: #777;
+}
+
+.ie7 .row-bar li {
+	width: 13% !important;
+}
+
+.ie7 .tile.large > a {
+	min-height: 6em !important;
+}
+
+.ie7 .row {
+    clear: both; 
+}
+
+.ie7 .mobile_buttons {
+	display: none;
+}
+
+.ie7 .navigation {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.ie7 .navigation li {
+	display:-moz-inline-stack;
+    display:inline-block;
+    zoom:1;
+	*display:inline;
+	margin-left: 20px;
+	text-align: center;
+}
+
+.ie7 #online_support {
+	float: none !important;
+}
+
+.ie7 .footer_main_links li {
+	display:-moz-inline-stack;
+    display:inline-block;
+    zoom:1;
+	*display:inline;
+}
+
+.ie7 .footer:hover .expanded_footer {
+	margin-top: -450px !important;
+}
+
+.ie7 .expanded_footer_links .columns {
+	width: 21% !important;
+}
+
+.ie7 .expanded_footer_social_links .large-2 {
+	width: 12% !important;
+}
+
+.ie7 .expanded_footer_disclaimers .large-9 {
+	width: 65%;
+}
+
+.ie7 .static-content {
+	margin-bottom: 100px;
+}
+
+.ie7 .calendar_event {
+	border-bottom: none;
+}
+
+.ie7 #p_social span.text_ind, .ie7 #p_social span.text_ind p, 
+.ie7 #p_mobile span.text_ind, .ie7 #p_mobile span.text_ind p { font-size:12px; text-indent:0;}
+
+.ie7 #trend_social_media_pages .large-6 {
+	width: 100% !important;
+}
+
+.ie7 #trend_social_media_pages .social_numbers {
+	display: none;
+}
+
+.ie7 #trend_social_media_pages .trend_social_num {
+	display: none;
+}
+
+.ie7 #trend_mobile_apps .trend_mobile_num {
+	display: none;
+}
+
+.ie7 #trends_page .trend_tile {
+	width: 90%;
+}
+
+.ie7 #trends_page #trend_ehawaii_facebook {
+	width: 80%;
+}
+
+.ie7 #trends_page #trend_ehawaii_twitter {
+	width: 80%;
+}
+
+.ie7 #trends_page #trend_ehawaii_youtube {
+	width: 80%;
+}
+
+.ie7 #transactions_no_content .left, .ie7 #businesses_no_content .left, .ie7 #camping_no_content .left {
+	width: 60%;
+}
+
+.ie7 #transactions_no_content .total_transactions span, .ie7 #transactions_no_content .top_service span {
+	position: relative;
+	top: -10px;
+}
+
+.ie7 #businesses_no_content .left .large-6 {
+	width: 45%;
+}
+
+.ie7 #camping_no_content .total_camping span {
+	position: relative;
+	top: -10px;
+}
+
+#alert_container {
+	position: relative;
+}
+
+#alert_container i {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	font-size: 25px;
+	cursor: pointer;
+}
