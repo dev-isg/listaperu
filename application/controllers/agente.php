@@ -4,7 +4,8 @@ class Agente extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('agentes_model');
-        $this->output->enable_profiler(TRUE);
+//        $this->output->enable_profiler(TRUE);
+        
     }
    public function verhomeagente(){
         $this->template->set_template('home');

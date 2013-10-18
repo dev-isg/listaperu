@@ -52,7 +52,7 @@
             <div id="main">
                 <?php if($telefono_search){?>
                 <div class=""><p><?php echo count($telefono_search)?>- Resultado<?php if(count($telefono_search) > 1)echo 's';?> <?php if($tipo2)echo 'en '.ucwords($tipo2);?>  <?php if($ubigeo2)echo 'de '.ucwords($ubigeo2);?></p></div>
-                <h2>Lista de agentes</h2>
+                <h2>Lista de teléfonos</h2>
                         <table class="table table-striped table-bordered">
                         <?php if (count($telefono_search) > 0) { ?>
                             <thead>  
