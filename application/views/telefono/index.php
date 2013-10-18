@@ -19,6 +19,7 @@
                     </select>
                   </div>
                 </div>
+                 <?php if($categoria!='hospitales'){?>
                 <div class="control-group">
                   <label class="control-label aa" for="inputDis">Distrito:</label>
                   <div class="controls bb">
@@ -31,6 +32,7 @@
                     <?php echo form_error('distrito'); ?>
                   </div>
                 </div>
+                <?php } ?>
                 <!--<div class="control-group">
                   <label class="control-label aa" for="inputBan">Tipo:</label>
                   <div class="controls bb">
@@ -51,7 +53,7 @@
             </form>
             <div id="main">
                 <?php if($telefono_search){?>
-                <div class=""><p><?php echo count($telefono_search)?>- Resultado<?php if(count($telefono_search) > 1)echo 's';?> <?php if($tipo2)echo 'en '.ucwords($tipo2);?>  <?php if($ubigeo2)echo 'de '.ucwords($ubigeo2);?></p></div>
+                <div class=""><p>Mostrando <?php echo count($telefono_search).' de '.$total_busqueda?> Resultado<?php if(count($telefono_search) > 1)echo 's';?> <?php if($tipo2)echo 'de '.ucwords($tipo2);?>  <?php if($ubigeo2)echo 'en '.ucwords($ubigeo2);?></p></div>
                 <h2>Lista de teléfonos</h2>
                         <table class="table table-striped table-bordered">
                         <?php if (count($telefono_search) > 0) { ?>
@@ -60,15 +62,17 @@
                                     <th>Nombre</th>
                                     <th>Teléfono</th>
                                     <th>Dirección</th>
+                                    <?php if($categoria!='hospitales'){?>
                                     <th>Distrito</th>
+                                    <?php }?>
                                 </tr>
                             </thead>
                             <?php foreach ($telefono_search as $news_item): ?>
                                 <tr>
-                                    <td><?php echo $news_item->va_nombre; ?></td>
-                                    <td><?php echo $news_item->va_telefono; ?></td>
-                                    <td><?php echo $news_item->va_direccion; ?></td>
-                                    <td><?php echo $news_item->ch_distrito; ?></td>
+                                    <td><?php if($news_item->va_nombre){echo $news_item->va_nombre; }?></td>
+                                    <td><?php if($news_item->va_telefono){echo $news_item->va_telefono; }?></td>
+                                    <td><?php if($news_item->va_direccion){echo $news_item->va_direccion; }?></td>
+                                   <?php if($news_item->ch_distrito){?> <td><?php echo $news_item->ch_distrito; ?></td><?php }?>
                                 </tr>
                             <?php endforeach ?>
                             <?php }else { ?>

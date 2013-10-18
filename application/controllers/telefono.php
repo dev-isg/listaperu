@@ -57,6 +57,7 @@ class Telefono extends CI_Controller{
         }
         
         $data['telefono_search']=$datasearch;
+        $data['total_busqueda'] = $cuantos;
         //$data['seo_busqueda']=$data['ubigeo2']?$data['banco2'].':'.$data['ubigeo2']:$data['banco2'];
         
             $config['base_url'] = $urlfinal;

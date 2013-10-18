@@ -64,6 +64,7 @@ class Institucion extends CI_Controller {
 //        var_dump($datasearch);Exit;
 //        $data['ubigeo2']=$this->input->get('distrito');
         $data['institucion_search']=$datasearch;
+        $data['total_busqueda'] = $cuantos;
         
             $config['base_url'] = $urlfinal;//base_url().'agente'.//base_url().'agente/'.$depa.'/'.$ubigeoid.'/'.$banco;//
             $config['total_rows'] = $cuantos;
@@ -103,8 +104,7 @@ class Institucion extends CI_Controller {
         $data['title'] = 'agregar insticución';
     
         $data['distritos']=$this->agentes_model->get_ubigeo();
-        $data['tipo']=$this->institucion_model->get_tipo();
-        
+        $data['tipo']=$this->institucion_model->get_tipo();     
         if($_POST){
                 $this->form_validation->set_rules('direccion', 'direccion', 'required');
                 $this->form_validation->set_rules('nombre', 'nombre', 'required');

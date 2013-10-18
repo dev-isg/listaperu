@@ -22,6 +22,7 @@
                     </select>
                   </div>
                 </div>
+               
                 <div class="control-group">
                   <label class="control-label aa" for="inputDis">Distrito:</label>
                   <div class="controls bb">
@@ -34,6 +35,7 @@
                     <?php echo form_error('distrito'); ?>
                   </div>
                 </div>
+                 
                 <div class="control-group">
                   <div class="controls bb">
                     <input type="submit" class="btn btn-primary" value="Buscar"/> 
@@ -42,23 +44,24 @@
             </form>
             <div id="main">
                 <?php if($institucion_search){?>
-                <div class=""><p><?php echo count($institucion_search)?>- Resultado<?php if(count($institucion_search) > 0)echo 's';?> <?php if($tipo)echo ' de '.ucwords($tipo);?> <?php if($ubigeo)echo ' en '.ucwords($ubigeo);?></p></div>
+                <div class=""><p>Mostrando <?php echo count($institucion_search).' de '.$total_busqueda?> Resultado<?php if(count($institucion_search) > 0)echo 's';?> <?php if($tipo)echo ' de '.ucwords($tipo);?> <?php if($ubigeo)echo ' en '.ucwords($ubigeo);?></p></div>
                 <h2>Lista de agentes</h2>
                         <table class="table table-striped table-bordered">
                         <?php if (count($institucion_search) > 0) { ?>
                             <thead>  
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Direccion</th>
-                                    <th>Distrito</th>
+                                        <th>Nombre</th>
+                                        <th>Direccion</th>
+                                        <th>Distrito</th>
+
 <!--                                    <th>Tipo</th>-->
                                 </tr>
                             </thead>
                             <?php foreach ($institucion_search as $news_item): ?>
                                 <tr>
-                                    <td><?php echo $news_item->va_nombre; ?></td>
-                                    <td><?php echo $news_item->va_direccion; ?></td>
-                                    <td><?php echo $news_item->ch_distrito; ?></td>
+                                    <td><?php if($news_item->va_nombre)echo $news_item->va_nombre; ?></td>
+                                    <td><?php if($news_item->va_direccion)echo $news_item->va_direccion; ?></td>
+                                    <td><?php if($news_item->ch_distrito)echo $news_item->ch_distrito; ?></td>
                                 </tr>
                             <?php endforeach ?>
                             <?php }else { ?>

@@ -51,7 +51,7 @@
             </form>
             <div id="main">
                 <?php if($agentes_search){?>
-                <div class=""><p><?php echo $total_busqueda;?>- Resultado<?php if(count($agentes_search) > 1)echo 's';?> <?php if($banco2)echo 'de '.ucwords($banco2);?> <?php if($ubigeo2)echo 'en '.ucwords($ubigeo2);?></p></div>
+                <div class=""><p>Mostrando <?php echo count($agentes_search).' de '.$total_busqueda;?> Resultado<?php if(count($agentes_search) > 1)echo 's';?> <?php if($banco2)echo 'de '.ucwords($banco2);?> <?php if($ubigeo2)echo 'en '.ucwords($ubigeo2);?></p></div>
                 <h2>Lista de agentes</h2>
                         <table class="table table-striped table-bordered">
                         <?php if (count($agentes_search) > 0) { ?>
