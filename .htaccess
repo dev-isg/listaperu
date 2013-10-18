@@ -52,7 +52,7 @@ AddDefaultCharset UTF-8
     #such as an image or css document, if this isn't true it sends the
     #request to index.php
     #RewriteRule ^sitemap_(.*)\.xml$ /xml/sitemap/$1 #[L]
-    RewriteRule ^.*/sitemap_(.*)\.xml$ index.php/sitemap/$1[L]
+   # RewriteRule ^.*/sitemap_(.*)\.xml$ index.php/sitemap/$1[L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?/$1 [L]
