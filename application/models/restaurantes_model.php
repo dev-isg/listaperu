@@ -16,7 +16,7 @@ public $db2;
     
     
     public function get_tipocomida(){
-        $this->db2->select('ta_tipo_comida.*')
+        $this->db2->select('ta_tipo_comida.*,count(ta_restaurante.ta_tipo_comida_in_id) as numtot')
                 ->from('ta_tipo_comida')
                 ->join('ta_restaurante', 'ta_tipo_comida.in_id=ta_restaurante.ta_tipo_comida_in_id', 'left')
                 ->where('va_nombre_tipo != "vacio" 
@@ -44,6 +44,7 @@ public $db2;
                 ->join('ta_local', 'ta_restaurante.in_id=ta_local.ta_restaurante_in_id', 'left')
                 ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_local.ta_ubigeo_in_id', 'left')
                 ->where(array('ta_tipo_comida_in_id'=>$tipo,'en_estado'=>'activo'))
+                ->group_by('ta_restaurante.in_id ')
                  ->order_by("ta_restaurante.va_nombre", "asc");
 
          if ($paginator == true) {

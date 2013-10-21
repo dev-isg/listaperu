@@ -42,5 +42,6 @@ define('ASSETS','public/assets/');
 define('MYHI','public/myhi/');
 define('CSS','public/css/');
 define('UPLOAD','public/upload/');
+//define('URLHOME','http://192.168.1.50:8082');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -9,6 +9,9 @@ class Telefono extends CI_Controller{
         $this->template->set_template('home');
         $data['page_body']='page-telefono';
         $title= 'Teléfonos de Emergencia|ListaPeru.com';
+        $data['comisarias']=$this->telefonos_model->search_telefonos(null,1842);
+        $data['bomberos']=$this->telefonos_model->search_telefonos(null,1843);
+        $data['hospitales']=$this->telefonos_model->search_telefonos(null,1844);
         $this->template->write('title', $title);
         $this->template->write_view('content', 'telefono/verhometelefono', $data, TRUE); 
         $this->template->render();

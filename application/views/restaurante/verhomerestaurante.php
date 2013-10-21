@@ -15,6 +15,7 @@
                 <div class="large-3 columns tile">
 					<a href="/restaurante/<?php echo url_title_canonical($tipocomida['va_nombre_tipo'],'spaceChar',true,array('suffix' => $tipocomida['in_id']));?>" class="restaurante secondary">
 						<h3><?php echo htmlspecialchars($str, ENT_QUOTES, 'utf-8');?></h3>
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $tipocomida['numtot'];?></span></span>
 						<i class="icon-marina"></i>
 					</a>
 				</div>

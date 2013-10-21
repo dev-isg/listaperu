@@ -65,8 +65,7 @@ $route['default_controller'] ='home/index';//'agente/index'; //"welcome";
 $route['terminos'] = 'home/terminos';
 $route['acerca'] = 'home/acerca';
 $route['404_override'] = '';
-//$route["sitemap/(.*)"] = 'webpages/blog/$1';
-//$route['sitemap\.xml'] = 'sitemap_index';
+
 
 
 /* End of file routes.php */

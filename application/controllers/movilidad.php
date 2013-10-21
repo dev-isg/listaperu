@@ -11,6 +11,8 @@ class Movilidad extends CI_Controller {
         $this->template->set_template('home');
         $data['page_body']='page-mobilidad';
         $title= 'Servicio de Movilidades|ListaPeru.com';
+        $data['canttaxis']=$this->mobilidad_model->search_mobilidad(null,1);
+        $data['cantmudanzas']=$this->mobilidad_model->search_mobilidad(null,2);
         $this->template->write('title', $title);
         $this->template->write_view('content', 'movilidad/verhomemovilidad', $data, TRUE); 
         $this->template->render();

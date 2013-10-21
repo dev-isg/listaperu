@@ -31,7 +31,7 @@ class Restaurante extends CI_Controller {
         
 	$data['title'] = 'Ver agentes';
         
-        $porpagina=10;
+        $porpagina=100;
         if ($this->uri->segment(2) == 'buscar' || strpos($_SERVER['REQUEST_URI'], '?')) {
              $page=$this->input->get('page')?$this->input->get('page'):0;
         }else{

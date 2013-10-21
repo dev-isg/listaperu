@@ -27,13 +27,12 @@ Header set Cache-Control "max-age=604800, public"
 
 AddDefaultCharset UTF-8
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-  
+    #RewriteEngine On
+    #RewriteRule ^.*/sitemap_\.xml$ /index.php?/public/sitemap_index.xml [L]
   	# my url is http://localhost/arny
     #RewriteBase /arny/
 	# set your own
-	RewriteBase /
-	
+    RewriteBase /
     #Removes access to the system folder by users.
     #Additionally this will allow you to create a System.php controller,
     #previously this would not have been possible.
@@ -51,10 +50,10 @@ AddDefaultCharset UTF-8
     #Checks to see if the user is attempting to access a valid file,
     #such as an image or css document, if this isn't true it sends the
     #request to index.php
-    #RewriteRule ^sitemap_(.*)\.xml$ /xml/sitemap/$1 #[L]
-   # RewriteRule ^.*/sitemap_(.*)\.xml$ index.php/sitemap/$1[L]
+    
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?/$1 [L]
+    RewriteRule ^.*/sitemap_\.xml$ /public/sitemap_index.xml [L]
     
 </IfModule>

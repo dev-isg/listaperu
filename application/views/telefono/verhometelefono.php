@@ -7,18 +7,21 @@
 				<div class="large-3 columns tile large">
 					<a href="/telefono/policia" class="government primary">
 						<h3>Policia Nacional</h3>
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $comisarias;?></span></span>
 						<div class="timg timg-job-employ policia"></div>
 					</a>
 				</div>
 				<div class="large-3 columns tile large">
 					<a href="/telefono/bomberos" class="government primary">
 						<h3>Bomberos del Perú</h3>
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $bomberos;?></span></span>
 						<div class="timg timg-job-employ bomberos"></div>
 					</a>
 				</div>
 				<div class="large-3 columns tile large" style="float:left;">
 					<a href="/telefono/hospitales" class="government primary">
 						<h3>Hospitales del Perú</h3>
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $hospitales;?></span></span>
 						<div class="timg timg-job-employ hospitales"></div>
 					</a>
 				</div>

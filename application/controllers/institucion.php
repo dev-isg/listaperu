@@ -11,6 +11,8 @@ class Institucion extends CI_Controller {
         $this->template->set_template('home');
         $data['page_body']='page-institucion';
         $title= 'Instituciones Públicas|ListaPeru.com';
+        $data['sunat']=$this->institucion_model->search_institucion(1);
+        $data['reniec']=$this->institucion_model->search_institucion(2);
         $this->template->write('title', $title);
         $this->template->write_view('content', 'institucion/verhomeinstitucion', $data, TRUE); 
         $this->template->render();

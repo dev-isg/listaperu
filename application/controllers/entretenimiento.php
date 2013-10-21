@@ -15,6 +15,10 @@ class Entretenimiento extends CI_Controller {
         $this->template->set_template('home');
         $data['page_body'] = 'page-mobilidad';
         $title = 'Lugares de Entretenimiento|ListaPeru.com';
+        $data['cantdisco'] = $this->entretenimiento_model->search_entretenimiento(null, 1);
+        $data['cantbares'] = $this->entretenimiento_model->search_entretenimiento(null, 2);
+        $data['cantcines'] = $this->entretenimiento_model->search_entretenimiento(null, 4);
+        
         $this->template->write('title', $title);
         $this->template->write_view('content', 'entretenimiento/verhomeentretenimiento', $data, TRUE);
         $this->template->render();

@@ -143,7 +143,7 @@ class SiteMap
 }//end class SiteMap
 
 
-defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/..'));
+defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__)));//defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/..'));
 //set_include_path(implode(PATH_SEPARATOR, array(
 //    realpath(APPLICATION_PATH . '/vendor/zendframework/zendframework/library'),
 //    get_include_path()
@@ -151,10 +151,10 @@ defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FIL
 
 
 
-//require __DIR__.'/../system/core/CodeIgniter.php';
+//require __DIR__.'/system/core/CodeIgniter.php';//__DIR__.'/../system/core/CodeIgniter.php';
 //$CI  =&get_instance();
 //$CI->load->helper('url');
-$baseUrl='http://192.168.1.50:8082';//$CI->config->item('base_url');//$config['host']['base'];
+$baseUrl='http://192.168.1.50:8082';//$CI->config->item('base_url');//'http://192.168.1.50:8082';//$config['host']['base'];
 $time = explode(" ",microtime());
 $time = $time[1];
 
@@ -166,7 +166,7 @@ $restaSitemapCount = 1;
 $moviliSitemapCount = 1;
 $entreSitemapCount = 1;
    
-$sm = new SiteMap($baseUrl, APPLICATION_PATH .'/public/');
+$sm = new SiteMap($baseUrl, APPLICATION_PATH.'/');//new SiteMap($baseUrl, APPLICATION_PATH .'/public/');
 $sm->sitemapIndexFileName = 'sitemap_index.xml';
 //$sm->sitemapFileName = 'agente'.str_pad($agenteSitemapCount,2,'0',STR_PAD_LEFT).'_sitemap.xml';
 $sm->init();
@@ -183,7 +183,7 @@ $sm->init();
        $data1 = $conn->query("SELECT va_nombre FROM ta_banco");
        $data1->setFetchMode(PDO::FETCH_OBJ);
        $resultado1=$data1->fetchAll();
-       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
+       require_once(__DIR__.'/application/helpers/my_url_helper.php');//require_once(__DIR__.'/../application/helpers/my_url_helper.php');
         foreach ($resultado1 as $value1) {
            $sm->addUrl($baseUrl . '/agente/' .url_title_canonical($value1->va_nombre, '_',true),date('c'),'weekly');
          }
@@ -194,7 +194,7 @@ $sm->init();
        $data2 = $conn->query("SELECT va_nombre FROM ta_tipo_telf");
        $data2->setFetchMode(PDO::FETCH_OBJ);
        $resultado2=$data2->fetchAll();
-       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
+       require_once(__DIR__.'/application/helpers/my_url_helper.php');//require_once(__DIR__.'/../application/helpers/my_url_helper.php');
         foreach ($resultado2 as $value2) {
            $sm->addUrl($baseUrl . '/telefono/' .url_title_canonical($value2->va_nombre, '_',true),date('c'),'weekly');
          }
@@ -205,7 +205,7 @@ $sm->init();
        $data3 = $conn->query("SELECT va_nombre FROM ta_tipo_institucion");
        $data3->setFetchMode(PDO::FETCH_OBJ);
        $resultado3=$data3->fetchAll();
-       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
+       require_once(__DIR__.'/application/helpers/my_url_helper.php');//require_once(__DIR__.'/../application/helpers/my_url_helper.php');
         foreach ($resultado3 as $value3) {
            $sm->addUrl($baseUrl . '/institucion/' .url_title_canonical($value3->va_nombre, '_',true),date('c'),'weekly');
          }
@@ -216,7 +216,7 @@ $sm->init();
        $data4 = $conn->query("SELECT va_nombre FROM ta_tipo_mobilidad");
        $data4->setFetchMode(PDO::FETCH_OBJ);
        $resultado4=$data4->fetchAll();
-       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
+        require_once(__DIR__.'/application/helpers/my_url_helper.php');//       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
         foreach ($resultado4 as $value4) {
            $sm->addUrl($baseUrl . '/movilidad/' .url_title_canonical($value4->va_nombre, '_',true),date('c'),'weekly');
          }
@@ -227,7 +227,7 @@ $sm->init();
        $data5 = $conn->query("SELECT va_nombre FROM ta_tipo_entretenimiento");
        $data5->setFetchMode(PDO::FETCH_OBJ);
        $resultado5=$data5->fetchAll();
-       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
+        require_once(__DIR__.'/application/helpers/my_url_helper.php');//       require_once(__DIR__.'/../application/helpers/my_url_helper.php');
         foreach ($resultado5 as $value5) {
            $sm->addUrl($baseUrl . '/entretenimiento/' .url_title_canonical($value5->va_nombre, '_',true),date('c'),'weekly');
          }
@@ -255,7 +255,7 @@ $sm->init();
                 
                 $sm->addSitemap('restaurante' . str_pad($restaSitemapCount, 2, '0', STR_PAD_LEFT) . '_sitemap.xml');
                 
-                require_once(__DIR__.'/../application/helpers/my_url_helper.php');
+                 require_once(__DIR__.'/application/helpers/my_url_helper.php');//                require_once(__DIR__.'/../application/helpers/my_url_helper.php');
                  foreach ($resultado6 as $value6) {
                     $sm->addUrl($baseUrl . '/restaurante/' .url_title_canonical($value6->va_nombre_tipo, 'spaceChar',
                                             true,array('suffix' => $value6->in_id)),date('c'),'weekly');

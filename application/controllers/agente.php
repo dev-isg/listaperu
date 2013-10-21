@@ -17,6 +17,12 @@ class Agente extends CI_Controller {
         }
         $posaux=  strripos($auxcant, ',');
         $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+        
+        $data['bcp']=$this->agentes_model->search_agentes(1);
+        $data['scotianbank']=$this->agentes_model->search_agentes(2);
+        $data['interbank']=$this->agentes_model->search_agentes(3);
+        $data['bbva']=$this->agentes_model->search_agentes(4);
+        $data['banconacion']=$this->agentes_model->search_agentes(5);
     
         $this->template->write_view('content', 'agente/verhomeagente', $data, TRUE); 
         $this->template->render();

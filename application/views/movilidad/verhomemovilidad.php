@@ -7,12 +7,14 @@
 				<div class="large-3 columns tile large">
 					<a href="/movilidad/taxi" class="visitors primary">
 						<h3>Taxis</h3>
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $canttaxis;?></span></span>
 						<div class="timg timg-job-employ taxis"></div>
 					</a>
 				</div>
 				<div class="large-3 columns tile large" style="float:left;">
 					<a href="/movilidad/mudanzas" class="visitors primary">
 						<h3>Mudanzas</h3>
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $cantmudanzas;?></span></span>
 						<div class="timg timg-job-employ mudanza"></div>
 					</a>
 				</div>
