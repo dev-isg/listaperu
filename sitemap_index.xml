@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<sitemap><loc>http://192.168.1.50:8082/agente01_sitemap.xml</loc></sitemap>
+<sitemap><loc>http://192.168.1.50:8082/telefono01_sitemap.xml</loc></sitemap>
+<sitemap><loc>http://192.168.1.50:8082/institucion01_sitemap.xml</loc></sitemap>
+<sitemap><loc>http://192.168.1.50:8082/movilidad01_sitemap.xml</loc></sitemap>
+<sitemap><loc>http://192.168.1.50:8082/entretenimiento01_sitemap.xml</loc></sitemap>
+<sitemap><loc>http://192.168.1.50:8082/restaurante01_sitemap.xml</loc></sitemap>
+</sitemapindex>
