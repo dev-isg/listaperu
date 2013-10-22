@@ -13,17 +13,30 @@ class Agente extends CI_Controller {
         $bancos=$this->agentes_model->get_bancos();
         $auxcant='Agentes de ';
         foreach($bancos as $banco){
+                //cadena para el nombre del banco
                 $auxcant.=$banco['va_nombre'].',';
+                //para el metadesct
+                $cantidad=$this->agentes_model->cantbancoxUbigeo($banco['in_id'],5);
+                $auxcant2='Agentes '.$banco['va_nombre'].'-';
+                foreach($cantidad as $cant){
+                        $auxcant2.=$cant->ch_distrito.',';
+                }
+                $posaux2=  strripos($auxcant2, ',');
+                $metades.=substr($auxcant2,0,$posaux2).'|';
         }
         $posaux=  strripos($auxcant, ',');
-        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+        $title=  substr($auxcant,0,$posaux).'|ListaPeru.com';
         
         $data['bcp']=$this->agentes_model->search_agentes(1);
         $data['scotianbank']=$this->agentes_model->search_agentes(2);
         $data['interbank']=$this->agentes_model->search_agentes(3);
         $data['bbva']=$this->agentes_model->search_agentes(4);
         $data['banconacion']=$this->agentes_model->search_agentes(5);
-    
+        
+        $posaux3=  strripos($metades, '|'); 
+        $data['descripcion']=  substr($metades,0,$posaux3).'|ListaPeru.com';
+        
+        $this->template->write('title', $title); 
         $this->template->write_view('content', 'agente/verhomeagente', $data, TRUE); 
         $this->template->render();
 //        $this->load->view('agente/verhomeagente');

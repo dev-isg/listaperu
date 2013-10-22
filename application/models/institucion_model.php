@@ -43,9 +43,24 @@ class Institucion_model extends CI_Model{
     
     public function get_tipo(){
         $query=$this->db->get('ta_tipo_institucion');
-        return $query->result_array();
+        return $query->result_object();
 
     }
+    
+     public function cantinstxUbigeo($idinst, $limit = null) {
+        $this->db->select('count(ta_institucion.ta_ubigeo_in_id) as cantinst,
+                   ta_ubigeo.ch_distrito')
+                ->from('ta_institucion')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_institucion.ta_ubigeo_in_id')
+                ->where(array('ta_institucion.ta_tipo_in_id' => $idinst))
+                ->group_by('ta_ubigeo.ch_distrito')
+                ->order_by('cantinst DESC');
+        
+        $this->db->limit($limit);
+        $query = $this->db->get();
+        return $query->result_object();
+    }
+    
     public function get_ubigeo(){
         $this->db->select('in_iddis,ch_distrito')->from('ta_ubigeo')
                 ->where(array('ch_departamento'=>'LIMA','ch_provincia'=>'LIMA'))

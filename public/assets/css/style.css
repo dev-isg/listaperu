@@ -1319,6 +1319,12 @@ a:focus {
 	font-weight: 400;
 }
 
+.datatile.span_center {
+	margin-top: 0.5em;
+	text-align: center;
+	font-weight: 400;
+}
+
 .dt_large {
 	display: block;
 	font-size: 1.4em;

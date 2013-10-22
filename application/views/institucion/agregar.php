@@ -47,7 +47,7 @@
                         <select name="tipo">
                             <option value="">--Seleccionar--</option>
                             <?php foreach ($tipo as $value): ?>
-                                <option value="<?php echo $value['in_id'] ?>"><?php echo $value['va_nombre'] ?></option>
+                                <option value="<?php echo $value->in_id; ?>"><?php echo $value->va_nombre; ?></option>
                             <?php endforeach ?>
                         </select></br>
                     </div>

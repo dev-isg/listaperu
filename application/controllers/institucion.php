@@ -13,6 +13,21 @@ class Institucion extends CI_Controller {
         $title= 'Instituciones Públicas|ListaPeru.com';
         $data['sunat']=$this->institucion_model->search_institucion(1);
         $data['reniec']=$this->institucion_model->search_institucion(2);
+        
+        $tipos=$this->institucion_model->get_tipo();
+        foreach($tipos as $tipo){
+                //para el metadesct
+                $cantidad=$this->institucion_model->cantinstxUbigeo($tipo->in_id,2);
+                $auxcant2='Dirección de '.$tipo->va_nombre.'-';
+                foreach($cantidad as $cant){
+                        $auxcant2.=$cant->ch_distrito.',';
+                }
+                $posaux2=  strripos($auxcant2, ',');
+                $metades.=substr($auxcant2,0,$posaux2).'|';
+        }
+        $posaux3=  strripos($metades, '|'); 
+        $data['descripcion']=  substr($metades,0,$posaux3).'|ListaPeru.com';
+        
         $this->template->write('title', $title);
         $this->template->write_view('content', 'institucion/verhomeinstitucion', $data, TRUE); 
         $this->template->render();

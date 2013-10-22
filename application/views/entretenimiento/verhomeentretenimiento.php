@@ -7,22 +7,28 @@
 				<div class="large-3 columns tile large">
 					<a href="/entretenimiento/discoteca" class="entretenimiento primary">
 						<h3>Discotecas</h3>
-                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $cantdisco;?></span></span>
-						<div class="timg timg-job-employ disco"></div>
+                                                <span class="datatile span_center">
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;">(<?php echo $cantdisco;?>)</span></span>
+						</span>
+                                                <div class="timg timg-job-employ disco"></div>
 					</a>
 				</div>
 				<div class="large-3 columns tile large" style="float:left;">
 					<a href="/entretenimiento/bar" class="entretenimiento primary">
 						<h3>Bares</h3>
-                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $cantbares;?></span></span>
-						<div class="timg timg-job-employ bares"></div>
+                                                <span class="datatile span_center">
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;">(<?php echo $cantbares;?>)</span></span>
+                                                </span>
+                                                <div class="timg timg-job-employ bares"></div>
 					</a>
 				</div>
 				<div class="large-3 columns tile large" style="float:left;">
 					<a href="/entretenimiento/cines" class="entretenimiento primary">
 						<h3>Cines</h3>
-                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;"><?php echo $cantcines;?></span></span>
-						<div class="timg timg-job-employ cines"></div>
+                                                <span class="datatile span_center">
+                                                <span class="dt_large"><span class="number_commas" style="font-size: 0.9em;">(<?php echo $cantcines;?>)</span></span>
+						</span>
+                                                <div class="timg timg-job-employ cines"></div>
 					</a>
 				</div>
 			</div>

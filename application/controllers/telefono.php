@@ -12,6 +12,27 @@ class Telefono extends CI_Controller{
         $data['comisarias']=$this->telefonos_model->search_telefonos(null,1842);
         $data['bomberos']=$this->telefonos_model->search_telefonos(null,1843);
         $data['hospitales']=$this->telefonos_model->search_telefonos(null,1844);
+        
+        $telefonos=$this->telefonos_model->get_tipos();
+//        $auxcant='Teléfonos de ';
+        foreach($telefonos as $telef){
+                //cadena para el nombre del banco
+//                $auxcant.=$telef->va_nombre.',';
+                //para el metadesct
+                $cantidad=$this->telefonos_model->canttelfxUbigeo($telef->in_id,5);
+                $auxcant2='Dirección y Teléfonos de '.$telef->va_nombre.'-';
+                foreach($cantidad as $cant){
+                        $auxcant2.=$cant->ch_distrito.',';
+                }
+                $posaux2=  strripos($auxcant2, ',');
+                $metades.=substr($auxcant2,0,$posaux2).'|';
+        }
+  
+//        $posaux=  strripos($auxcant, ',');
+//        $title=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+     
+        $posaux3=  strripos($metades, '|'); 
+        $data['descripcion']=  substr($metades,0,$posaux3).'|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'telefono/verhometelefono', $data, TRUE); 
         $this->template->render();
@@ -23,7 +44,7 @@ class Telefono extends CI_Controller{
         $this->load->library('pagination');
        
         $data['distritos']=$this->telefonos_model->get_ubigeo();
-        $data['tipos']=$this->telefonos_model->get_tipos();
+//        $data['tipos']=$this->telefonos_model->get_tipos();
         
         $porpagina=10;
         if ($this->uri->segment(2) == 'buscar' || strpos($_SERVER['REQUEST_URI'], '?')) {

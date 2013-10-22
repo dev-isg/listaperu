@@ -15,7 +15,7 @@ public $db2;
     }
     
     
-    public function get_tipocomida(){
+    public function get_tipocomida($order='va_nombre_tipo',$des='asc'){
         $this->db2->select('ta_tipo_comida.*,count(ta_restaurante.ta_tipo_comida_in_id) as numtot')
                 ->from('ta_tipo_comida')
                 ->join('ta_restaurante', 'ta_tipo_comida.in_id=ta_restaurante.ta_tipo_comida_in_id', 'left')
@@ -23,12 +23,42 @@ public $db2;
                         and ta_restaurante.en_estado="activo"
                         and  ta_restaurante.ta_tipo_comida_in_id >0')
                 ->group_by('ta_restaurante.ta_tipo_comida_in_id ')
-                ->order_by("va_nombre_tipo", "asc");
+                ->order_by($order,$des);
+
         $query=$this->db2->get();
-//        var_dump($query->result_id->queryString);Exit;
         return $query->result_array();
     }
     
+   public function getcant_tipocomida($limit,$order='numtot',$des='desc'){
+        $this->db2->select('ta_tipo_comida.*,count(ta_restaurante.ta_tipo_comida_in_id) as numtot')
+                ->from('ta_tipo_comida')
+                ->join('ta_restaurante', 'ta_tipo_comida.in_id=ta_restaurante.ta_tipo_comida_in_id', 'left')
+                ->where('va_nombre_tipo != "vacio" 
+                        and ta_restaurante.en_estado="activo"
+                        and  ta_restaurante.ta_tipo_comida_in_id >0')
+                ->group_by('ta_restaurante.ta_tipo_comida_in_id ')
+                ->order_by($order,$des);
+        $this->db2->limit($limit);
+        $query=$this->db2->get();
+//        var_dump($query->result_id->queryString);Exit;
+        return $query->result_object();
+    }
+    
+   public function getcant_platos($limit,$order='numtot',$des='desc'){
+        $this->db2->select('ta_tipo_comida.*,count(ta_restaurante.ta_tipo_comida_in_id) as numtot')
+                ->from('ta_tipo_comida')
+                ->join('ta_restaurante', 'ta_tipo_comida.in_id=ta_restaurante.ta_tipo_comida_in_id', 'left')
+                ->where('va_nombre_tipo != "vacio" 
+                        and ta_restaurante.en_estado="activo"
+                        and  ta_restaurante.ta_tipo_comida_in_id >0')
+                ->group_by('ta_restaurante.ta_tipo_comida_in_id ')
+                ->order_by($order,$des);
+        $this->db2->limit($limit);
+        $query=$this->db2->get();
+//        var_dump($query->result_id->queryString);Exit;
+        return $query->result_object();
+    }
+        
     public function get_tipo($id){
          $this->db2->select()->from('ta_tipo_comida')
                  ->where(array('in_id'=>$id));

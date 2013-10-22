@@ -9,6 +9,10 @@ class Restaurante extends CI_Controller {
         $this->template->set_template('home');
         $data['page_body']='page-restaurante';
         $data['tipocomidas']=$this->restaurantes_model->get_tipocomida();
+        
+        //seo
+//        $categmax=$this->restaurantes_model->getcant_tipocomida(10);
+//        var_dump($categmax);exit;
         $title= 'Restaurantes|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'restaurante/verhomerestaurante', $data, TRUE); 

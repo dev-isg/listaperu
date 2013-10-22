@@ -6,10 +6,33 @@ class Telefonos_model extends CI_Model{
     
    public function get_telefonos(){
         $query=$this->db->get('ta_telef_emergencia');
+//        var_dump($query->result_id->queryString);exit;
         return $query->result_array();
         
     }
     
+   public function get_tipos(){
+        $query=$this->db->get('ta_tipo_telf');
+        return $query->result_object();
+    }
+    
+    
+   public function canttelfxUbigeo($idtelf, $limit = null) {
+        $this->db->select('count(ta_telef_emergencia.ta_ubigeo_in_id) as canttelf,
+                   ta_ubigeo.ch_distrito')
+                ->from('ta_telef_emergencia')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_telef_emergencia.ta_ubigeo_in_id')
+                ->where(array('ta_telef_emergencia.ta_tipo_telf_in_id' => $idtelf))
+                ->group_by('ta_ubigeo.ch_distrito')
+                ->order_by('canttelf DESC');
+        
+        $this->db->limit($limit);
+        $query = $this->db->get();
+//        var_dump($query->result_id->queryString);
+        return $query->result_object();
+    }
+    
+
     public function search_telefonos($distrito=null,$tipo=null,$per_page = null, $page = null, $paginator = false){
         $this->db->cache_on();
         $this->db->select('ta_telef_emergencia.*,ta_ubigeo.*,ta_tipo_telf.va_nombre as nombre_tipo')->from('ta_telef_emergencia')
@@ -38,11 +61,7 @@ class Telefonos_model extends CI_Model{
         
     }
     
-    public function get_tipos(){
-        $query=$this->db->get('ta_tipo_telf');
-        return $query->result_array();
-    }
-    
+
     public function get_ubigeo(){
         $this->db->select('in_iddis,ch_distrito')->from('ta_ubigeo')
                 ->where(array('ch_departamento'=>'LIMA','ch_provincia'=>'LIMA'))
