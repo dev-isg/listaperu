@@ -154,8 +154,19 @@ defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FIL
 //require __DIR__.'/system/core/CodeIgniter.php';//__DIR__.'/../system/core/CodeIgniter.php';
 define('BASEPATH','');
 include __DIR__.'/application/config/config.php';
+include __DIR__.'/application/config/database.php';
+
+$driv=$db['default']['hostname'].";dbname=".$db['default']['database'];
+$user=$db['default']['username'];
+$pass=$db['default']['password'];
+
+$driv2=$db['acomer']['hostname'].";dbname=".$db['acomer']['database'];
+$user2=$db['acomer']['username'];
+$pass2=$db['acomer']['password'];
+                
 //$CI  =&get_instance();
 //$CI->load->helper('url');
+//var_dump($db['default']);Exit;
 date_default_timezone_set('America/Lima');
 $baseUrl=$config['base_url'];//$CI->config->item('base_url');//'http://192.168.1.50:8082';//$config['host']['base'];
 $time = explode(" ",microtime());
@@ -174,8 +185,11 @@ $sm->sitemapIndexFileName = 'sitemap_index.xml';
 //$sm->sitemapFileName = 'agente'.str_pad($agenteSitemapCount,2,'0',STR_PAD_LEFT).'_sitemap.xml';
 $sm->init();
         try {
-	  	$conn = new PDO('mysql:host=192.168.1.50;dbname=bd_listaperu','kevin', '123456',  
+//                $conn = new PDO('mysql:host=192.168.1.50;dbname=bd_listaperu','kevin', '123456', 
+//                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+	  	$conn = new PDO(  "$driv", "$user","$pass",
                         array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+//               var_dump($conn);Exit;
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $conn->exec("set names utf8"); 
 	} catch(\PDOException $e) {
@@ -239,7 +253,10 @@ $sm->init();
          //restaurantes
  
           try {
-	  	$connres = new PDO('mysql:host=192.168.1.50;dbname=listadelsabor2','kevin', '123456',  
+                
+//	  	$connres = new PDO('mysql:host=192.168.1.50;dbname=listadelsabor2','kevin', '123456',  
+//                        array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                $connres = new PDO( "$driv2", "$user2","$pass2",
                         array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 $connres->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connres->exec("set names utf8"); 
