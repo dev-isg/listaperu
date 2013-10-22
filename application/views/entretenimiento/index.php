@@ -53,7 +53,7 @@
                 <p><?php echo $links; ?> </p>
                 <?php if ($entretenimiento_search) { ?>
                     <div class=""><p><?php echo count($entretenimiento_search) ?>- Resultado<?php if (count($entretenimiento_search) > 0) echo 's'; ?> <?php if($entret_tipo)echo ' de '.ucwords($entret_tipo); ?> <?php if($ubigeo)echo ' en '.ucwords($ubigeo); ?></p></div>
-                    <h2>Lista de agentes</h2>
+                    <h2>Lista de lugares</h2>
                     <table class="table table-striped table-bordered">
                         <?php if (count($entretenimiento_search) > 0) { ?>
                             <thead>  

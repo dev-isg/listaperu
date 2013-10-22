@@ -56,7 +56,7 @@
     
     <?php if($mobilidad_search){?>
     <div class=""><p><?php echo $total_movilidad;?>- Resultado<?php if(count($mobilidad_search) > 1)echo 's';?> <?php if($tipo_movilidad)echo 'de '.ucwords($tipo_movilidad);?> <?php if($distrito_movilidad)echo 'en '.ucwords($distrito_movilidad);?></p></div>
-    <h2>Lista de agentes</h2>
+    <h2>Lista de movilidades</h2>
             <table class="table table-striped table-bordered">
             <?php if (count($mobilidad_search) > 0) { ?>
                 <thead>  

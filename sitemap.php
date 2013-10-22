@@ -29,7 +29,7 @@ class SiteMap
   public function init ()
   { 
     $this->_openFileSitemapIndex();
-    $this->_openFileSitemap();
+//    $this->_openFileSitemap();
 //    echo $this->_fileSitemapIndex  .'-'.$this->sitemapFileName. PHP_EOL;exit;
   
 //    fwrite($this->_fileSitemapIndex, "<sitemap><loc>{$this->_baseUrl}/{$this->sitemapFileName}</loc></sitemap>");
@@ -88,7 +88,7 @@ class SiteMap
       . 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 
     $this->_fileSitemap = fopen($this->_basePath . $this->sitemapFileName,'w');
-    fwrite($this->_fileSitemap, $sitemapHeader);
+     fwrite($this->_fileSitemap, $sitemapHeader);
   } //end function initFileSitemap
 
   protected function _closeFileSitemap ()
@@ -150,11 +150,14 @@ defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FIL
 //)));
 
 
-
+//
 //require __DIR__.'/system/core/CodeIgniter.php';//__DIR__.'/../system/core/CodeIgniter.php';
+define('BASEPATH','');
+include __DIR__.'/application/config/config.php';
 //$CI  =&get_instance();
 //$CI->load->helper('url');
-$baseUrl='http://192.168.1.50:8082';//$CI->config->item('base_url');//'http://192.168.1.50:8082';//$config['host']['base'];
+date_default_timezone_set('America/Lima');
+$baseUrl=$config['base_url'];//$CI->config->item('base_url');//'http://192.168.1.50:8082';//$config['host']['base'];
 $time = explode(" ",microtime());
 $time = $time[1];
 
