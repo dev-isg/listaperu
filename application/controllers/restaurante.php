@@ -11,8 +11,24 @@ class Restaurante extends CI_Controller {
         $data['tipocomidas']=$this->restaurantes_model->get_tipocomida();
         
         //seo
-//        $categmax=$this->restaurantes_model->getcant_tipocomida(10);
-//        var_dump($categmax);exit;
+        $categmax=$this->restaurantes_model->getcant_tipocomida(10);
+        $distrimax=$this->restaurantes_model->getcant_restaurante(10);
+        $auxcant="";
+        $auxcant2="";
+        foreach ($categmax as $categ) {
+            $auxcant.=$categ->va_nombre_tipo.',';
+        }
+        $posaux=  strripos($auxcant, ',');
+        $metades.=substr($auxcant,0,$posaux);
+        
+         foreach ($distrimax as $distrit) {
+            $auxcant2.=$distrit->ch_distrito.',';
+        }
+        $posaux2=  strripos($auxcant2, ',');
+        $metadesdis.=substr($auxcant2,0,$posaux2);
+        
+//        var_dump($distri);exit;
+        $data['descripcion']=$metades.'-'.$metadesdis.'|ListaPeru.com';
         $title= 'Restaurantes|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'restaurante/verhomerestaurante', $data, TRUE); 
@@ -101,7 +117,11 @@ class Restaurante extends CI_Controller {
         $data['links']=$this->pagination->create_links();
          //SEO
         $title=  ucwords($data['nombre_tipo']).'|ListaPeru.com';
-//        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+        foreach ($datasearch as $restaurant) {
+            $auxcant.=$restaurant->va_nombre.'-'.$restaurant->ch_distrito.',';
+        }
+        $posaux=  strripos($auxcant, ',');
+        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
         $this->template->write('title', $title);  
         
         $this->template->write_view('content', 'restaurante/index', $data, TRUE); 

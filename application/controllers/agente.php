@@ -120,11 +120,11 @@ class Agente extends CI_Controller {
         
         //SEO
         $title=$data['banco2'].'-Agentes|ListaPeru.com';
-        $cantidad=$this->agentes_model->cantbancoxUbigeo($banco,5);
-        
+        $cantidad=$this->agentes_model->cantbancoxUbigeo($banco,5,'rand()');
+//        var_dump($cantidad);Exit;
         $auxcant=$data['banco2'].'-';
         foreach($cantidad as $cant){
-                $auxcant.=$cant->ch_distrito.',';
+                $auxcant.=$cant->ch_distrito.'-'.$cant->va_direccion.',';
         }
         $posaux=  strripos($auxcant, ',');
         $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';

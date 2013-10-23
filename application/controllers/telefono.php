@@ -107,7 +107,15 @@ class Telefono extends CI_Controller{
         
          //SEO
         $title=  ucwords($data['tipo2']).'|ListaPeru.com';
-//        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+        
+        $cantidad=$this->telefonos_model->canttelfxUbigeo($tipo,5,'rand()');
+        $auxcant=$data['tipo2'].'-';
+        foreach($cantidad as $cant){
+                $auxcant.=$cant->va_direccion.'-'.$cant->ch_distrito.',';
+        }
+        $posaux=  strripos($auxcant, ',');
+                
+        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'telefono/index', $data, TRUE); 
         $this->template->write_view('footer', 'templates/footer'); 

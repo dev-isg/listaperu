@@ -44,6 +44,19 @@ public $db2;
         return $query->result_object();
     }
     
+    public function getcant_restaurante($limit){
+        $this->db2->select('ta_local.*,count(ta_local.ta_restaurante_in_id) as numtot,ta_ubigeo.ch_distrito')
+                ->from('ta_local')
+                ->join('ta_ubigeo','ta_ubigeo.in_id=ta_local.ta_ubigeo_in_id','left')
+//                ->where('ta_restaurante.en_estado="activo"')
+                ->group_by('ta_local.ta_restaurante_in_id')
+                ->order_by('numtot desc');
+        $this->db2->limit($limit);
+        $query=$this->db2->get();
+//        var_dump($query->result_id->queryString);Exit;
+        return $query->result_object();
+    } 
+    
    public function getcant_platos($limit,$order='numtot',$des='desc'){
         $this->db2->select('ta_tipo_comida.*,count(ta_restaurante.ta_tipo_comida_in_id) as numtot')
                 ->from('ta_tipo_comida')

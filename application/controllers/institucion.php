@@ -108,6 +108,15 @@ class Institucion extends CI_Controller {
         
         //SEO
         $title=  ucwords($data['tipo']).'|ListaPeru.com';
+        
+        $cantidad=$this->institucion_model->cantinstxUbigeo($tipo,2,'rand()');
+        $auxcant=$data['tipo'].'-';
+        foreach($cantidad as $cant){
+                $auxcant.=$cant->va_direccion.'-'.$cant->ch_distrito.',';
+        }
+        $posaux=  strripos($auxcant, ',');
+                
+        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
 //        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
         $this->template->write('title', $title);   
         $this->template->write_view('content', 'institucion/index', $data, TRUE); 

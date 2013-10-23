@@ -47,14 +47,15 @@ class Institucion_model extends CI_Model{
 
     }
     
-     public function cantinstxUbigeo($idinst, $limit = null) {
+     public function cantinstxUbigeo($idinst, $limit = null,$order='cantinst DESC') {
+          $this->db->cache_off();
         $this->db->select('count(ta_institucion.ta_ubigeo_in_id) as cantinst,
-                   ta_ubigeo.ch_distrito')
+                   ta_ubigeo.ch_distrito,ta_institucion.va_direccion')
                 ->from('ta_institucion')
                 ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_institucion.ta_ubigeo_in_id')
                 ->where(array('ta_institucion.ta_tipo_in_id' => $idinst))
                 ->group_by('ta_ubigeo.ch_distrito')
-                ->order_by('cantinst DESC');
+                ->order_by($order);
         
         $this->db->limit($limit);
         $query = $this->db->get();

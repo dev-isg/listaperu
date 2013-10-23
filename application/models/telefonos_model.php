@@ -17,14 +17,15 @@ class Telefonos_model extends CI_Model{
     }
     
     
-   public function canttelfxUbigeo($idtelf, $limit = null) {
+   public function canttelfxUbigeo($idtelf, $limit = null,$order='canttelf DESC') {
+       $this->db->cache_off();
         $this->db->select('count(ta_telef_emergencia.ta_ubigeo_in_id) as canttelf,
-                   ta_ubigeo.ch_distrito')
+                   ta_ubigeo.ch_distrito,ta_telef_emergencia.va_direccion')
                 ->from('ta_telef_emergencia')
                 ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_telef_emergencia.ta_ubigeo_in_id')
                 ->where(array('ta_telef_emergencia.ta_tipo_telf_in_id' => $idtelf))
                 ->group_by('ta_ubigeo.ch_distrito')
-                ->order_by('canttelf DESC');
+                ->order_by($order);
         
         $this->db->limit($limit);
         $query = $this->db->get();

@@ -133,8 +133,9 @@ class Agentes_model extends CI_Model{
 //       $num=$this->search_agentes($idbanco);
 //       $aleatorio=rand(0,$num-10);
 //       var_dump($aleatorio);Exit;
+       $this->db->cache_off();
         $this->db->select('count(ta_agentes.ta_ubigeo_in_id) as cantagentes,
-                   ta_ubigeo.ch_distrito')
+                   ta_ubigeo.ch_distrito,ta_agentes.va_direccion')
                 ->from('ta_agentes')
                 ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_agentes.ta_ubigeo_in_id')
                 ->where(array('ta_agentes.ta_banco_in_id' => $idbanco))
@@ -143,7 +144,7 @@ class Agentes_model extends CI_Model{
         
         $this->db->limit($limit);
         $query = $this->db->get();
-//        var_dump($query->result_id->queryString);Exit;
+//        var_dump($query->result_id->queryString);
         return $query->result_object();
     }
     
