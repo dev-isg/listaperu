@@ -39,4 +39,5 @@ class Home extends CI_Controller {
         $this->template->render();
         
     }
+   
 }

@@ -125,6 +125,9 @@ class Institucion extends CI_Controller {
     }
     
        public function agregar(){
+        if(! $this->session->userdata("validate")){
+            redirect('/usuario');
+        }           
         $this->load->helper(array('form','url'));
         $this->load->library(array('form_validation','session'));
         $data['title'] = 'agregar insticución';

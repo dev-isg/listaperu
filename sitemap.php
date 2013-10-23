@@ -155,6 +155,10 @@ defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FIL
 define('BASEPATH','');
 include __DIR__.'/application/config/config.php';
 include __DIR__.'/application/config/database.php';
+//include __DIR__.'/system/core/CodeIgniter.php';
+//$CI  =&get_instance();
+//$query=$CI->db->get('ta_agentes');
+//var_dump($query->result_array());Exit;
 
 $driv=$db['default']['hostname'].";dbname=".$db['default']['database'];
 $user=$db['default']['username'];
@@ -163,7 +167,8 @@ $pass=$db['default']['password'];
 $driv2=$db['acomer']['hostname'].";dbname=".$db['acomer']['database'];
 $user2=$db['acomer']['username'];
 $pass2=$db['acomer']['password'];
-                
+
+
 //$CI  =&get_instance();
 //$CI->load->helper('url');
 //var_dump($db['default']);Exit;

@@ -8,7 +8,7 @@ public $db2;
     
    public function get_tot(){
         $this->db2->select('ta_restaurante.*')->from('ta_restaurante')
-                ->where(array('en_estado'=>'activo'));
+                ->where('en_estado="activo" and ta_tipo_comida_in_id > 0');
         $query=$this->db2->get();
 //          var_dump($query->result_id->queryString);Exit;
         return $query->result_array();
@@ -26,6 +26,7 @@ public $db2;
                 ->order_by($order,$des);
 
         $query=$this->db2->get();
+//        var_dump($query->result_id->queryString);Exit;
         return $query->result_array();
     }
     

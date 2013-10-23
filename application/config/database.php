@@ -68,7 +68,7 @@ $db['default']['stricton'] = FALSE;
 $db['acomer']['hostname'] = 'mysql:host=192.168.1.50';
 $db['acomer']['username'] = 'kevin';
 $db['acomer']['password'] = '123456';
-$db['acomer']['database'] = 'listadelsabor2';//'bd_produccion_final3';
+$db['acomer']['database'] = 'listadelsabor4';//'bd_produccion_final3';
 $db['acomer']['dbdriver'] = 'pdo';//mysql
 $db['acomer']['dbprefix'] = '';
 $db['acomer']['pconnect'] = TRUE;

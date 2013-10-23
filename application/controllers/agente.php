@@ -145,7 +145,10 @@ class Agente extends CI_Controller {
     
     
     public function agregar(){
-//        var_dump($this->session->userdata("language"));Exit;
+        if(! $this->session->userdata("validate")){
+            redirect('/usuario');
+        }
+       
         $this->load->helper(array('form','url'));
         $this->load->library(array('form_validation','session'));
         $aa=$this->input->get();

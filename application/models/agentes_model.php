@@ -153,4 +153,5 @@ class Agentes_model extends CI_Model{
         $this->db->cache_delete_all();
         
     }
+    
 }
