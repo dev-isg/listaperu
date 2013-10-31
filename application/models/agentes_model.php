@@ -10,7 +10,9 @@ class Agentes_model extends CI_Model{
         return $this->db->count_all_results();
     }
     public function get_agentes(){
+        $this->db->cache_off();
         $query=$this->db->get('ta_agentes');
+//          var_dump($query->result_id->queryString);Exit;
         return $query->result_array();
     }
     
@@ -95,7 +97,29 @@ class Agentes_model extends CI_Model{
         return $auxdistrito;
     }
     
-    public function search_agentes($banco = null, $ubigeo = null, $per_page = null, $page = null, $paginator = false) {
+    public function get_ficha_agentes($id){
+        $this->db->cache_off();
+        $this->db->select('ta_agentes.*,ta_banco.va_nombre as nombre_banco,ta_ubigeo.ch_distrito')
+                ->from('ta_agentes')
+                ->join('ta_banco', 'ta_banco.in_id=ta_agentes.ta_banco_in_id', 'left')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_agentes.ta_ubigeo_in_id', 'left')
+                ->where(array('ta_agentes.in_id'=>$id));
+        $query=$this->db->get();
+        return $query->result_array();
+    }
+    
+//    public function crear($id){
+//        $this->db->cache_off();
+//        $this->db->select('ta_agentes.*,ta_banco.va_nombre as nombre_banco,ta_ubigeo.ch_distrito')
+//                ->from('ta_agentes')
+//                ->join('ta_banco', 'ta_banco.in_id=ta_agentes.ta_banco_in_id', 'left')
+//                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_agentes.ta_ubigeo_in_id', 'left')
+//                ->where(array('ta_agentes.in_id'=>$id));
+//        $query=$this->db->get();
+//        return $query->result_array();
+//    }
+    
+    public function  search_agentes($banco = null, $ubigeo = null, $per_page = null, $page = null, $paginator = false) {
         $this->db->cache_on();
         $this->db->select('ta_agentes.*,ta_banco.va_nombre as nombre_banco,ta_ubigeo.ch_distrito')
                 ->from('ta_agentes')
@@ -148,10 +172,23 @@ class Agentes_model extends CI_Model{
         return $query->result_object();
     }
     
-    public function agregar_agentes($agente){
-        $this->db->insert('ta_agentes', $agente);
-        $this->db->cache_delete_all();
+    public function agregar_agentes($agente) {
+        $id = (int) $agente['in_id'];
         
+        if ($id == 0) {
+//            var_dump('con el id:'.$id);Exit;
+            $this->db->insert('ta_agentes', $agente);
+            $this->db->cache_delete_all();
+        } else {
+            if ($this->get_ficha_agentes($id)) {
+//                var_dump($id);exit;
+                $this->db->update('ta_agentes', $agente, array('in_id' => $id));
+            } else {
+                throw new \Exception('No se encontro datos para actualizar');
+            }
+        }
     }
+    
+   
     
 }

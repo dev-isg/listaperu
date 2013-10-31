@@ -7,7 +7,7 @@
                 <p><?php echo $this->session->flashdata('message') ?></p>
             <?php endif; ?>
 
-            <form class="form-horizontal" action="/mobilidad/agregar" method="post">
+            <form class="form-horizontal" action="/movilidad/agregar" method="post">
                 <div class="control-group">
                     <label class="control-label" for="name">Nombre</label>
                     <div class="controls">
@@ -62,15 +62,22 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label class="control-label" for="direccion">Descripción</label>
+                    <div class="controls">
+                        <textarea name="descripcion" placeholder="Ingrese descripción" rows="10" cols="50" style="width:100%"> </textarea>
+                        <?php echo form_error('descripcion'); ?>
+                    </div>
+                </div>
+                <div class="control-group">
                     <label class="control-label">&nbsp</label>
                     <div class="controls">
-                        <input type="submit" class="btn btn-primary" value="Agregar Agente"/> 
+                        <input type="submit" class="btn btn-primary" value="Agregar Movilidad"/> 
                     </div>
                 </div>
             </form>
             <?php if ($_GET['m']) { ?>
                 <?php if ($_GET['m'] == 1) { ?>
-                    <div class=""><p>Agente guardado correctamente</p></div>
+                    <div class=""><p>Tus datos se han guardado correctamente</p></div>
                 <?php } ?>
             <?php } ?>
         </div>

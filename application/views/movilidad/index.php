@@ -55,7 +55,7 @@
 <div id="main">
     
     <?php if($mobilidad_search){?>
-    <div class=""><p><?php echo $total_movilidad;?>- Resultado<?php if(count($mobilidad_search) > 1)echo 's';?> <?php if($tipo_movilidad)echo 'de '.ucwords($tipo_movilidad);?> <?php if($distrito_movilidad)echo 'en '.ucwords($distrito_movilidad);?></p></div>
+    <div class=""><p>Mostrando <?php echo count($mobilidad_search).' de '.$total_movilidad;?> Resultado<?php if(count($mobilidad_search) > 1)echo 's';?> <?php if($tipo_movilidad)echo 'de '.ucwords($tipo_movilidad);?> <?php if($distrito_movilidad)echo 'en '.ucwords($distrito_movilidad);?></p></div>
     <h2>Lista de movilidades</h2>
             <table class="table table-striped table-bordered">
             <?php if (count($mobilidad_search) > 0) { ?>
@@ -69,7 +69,7 @@
                 </thead>
                 <?php foreach ($mobilidad_search as $news_item): ?>
                     <tr>
-                        <td><?php echo $news_item->va_nombre; ?></td>
+                        <td><a href="/ver/movilidad/<?php echo $categoria;?>/<?php echo url_title_canonical($news_item->va_nombre,'spaceChar',true,array('suffix' => $news_item->in_id));?>"><?php echo $news_item->va_nombre; ?></a></td>
                         <td><?php echo $news_item->va_direccion; ?></td>
                         <td><?php echo $news_item->va_nombre_tipo; ?></td>
                         <td><?php echo $news_item->ch_distrito; ?></td>

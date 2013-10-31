@@ -60,9 +60,14 @@ $route['telefono/agregar'] = 'telefono/agregar/$1';
 $route['institucion/agregar'] = 'institucion/agregar/$1';
 $route['movilidad/agregar'] = 'movilidad/agregar/$1';
 $route['entretenimiento/agregar'] = 'entretenimiento/agregar/$1';
+#ruteo ver descripcion
+$route['ver/movilidad/(:any)'] = 'movilidad/vermovilidad/$1';
 #ruteo logueo
 $route['usuario'] = 'usuario/index';
 $route['usuario/logout'] = 'usuario/do_logout';
+#Restful
+#$route['agenterest']='servicio_rest/agentes_get/$1';
+#$route['agenterest/(:any)']='servicio_rest/agentes_get/$1';
 
 $route['default_controller'] ='home/index';//'agente/index'; //"welcome";
 $route['terminos'] = 'home/terminos';

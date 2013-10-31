@@ -10,6 +10,16 @@ class Mobilidad_model extends CI_Model{
         
     }
     
+    public function get_descripcion($id){
+        $this->db->select('ta_mobilidad.*,ta_tipo_mobilidad.va_nombre as va_nombre_tipo')
+                ->from('ta_mobilidad')
+                ->join('ta_tipo_mobilidad','ta_tipo_mobilidad.in_id=ta_mobilidad.ta_tipo_in_id','left')
+                ->where(array('ta_mobilidad.in_id'=>$id));
+        $query=$this->db->get();
+//        var_dump($query->result_id->queryString);exit;
+        return $query->result();
+    }
+    
     public function search_mobilidad($distrito=null,$tipo=null,$per_page = null, $page = null, $paginator = false){
         $this->db->cache_on();
         $this->db->select('ta_mobilidad.*,ta_tipo_mobilidad.va_nombre as va_nombre_tipo,ta_ubigeo.ch_distrito')
@@ -35,6 +45,26 @@ class Mobilidad_model extends CI_Model{
         } else {
             return $this->db->count_all_results();
         }
+        
+    }
+    /*
+     * @params limite
+     * Obtiene el random de movilidades
+     * @return array object
+     */
+    public function cantidad_random($tipo,$limit,$order){
+        $this->db->cache_off();
+        $this->db->select('ta_mobilidad.*,ta_tipo_mobilidad.va_nombre as va_nombre_tipo,ta_ubigeo.ch_distrito')
+                ->from('ta_mobilidad')
+                ->join('ta_tipo_mobilidad', 'ta_tipo_mobilidad.in_id=ta_mobilidad.ta_tipo_in_id', 'left')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_mobilidad.ta_ubigeo_in_id', 'left');
+
+            $this->db->where('ta_mobilidad.ta_tipo_in_id', $tipo);
+            $this->db->order_by($order);
+            $this->db->limit($limit);
+            $query = $this->db->get();
+//            var_dump($query->result_id->queryString);Exit;
+            return $query->result_object();
         
     }
     

@@ -23,7 +23,7 @@ class Entretenimiento_model extends CI_Model{
         if ($distrito != null) {
             $this->db->where('ta_ubigeo.in_iddis', $distrito);
         }
-        
+        $this->db->order_by('ta_ubigeo.ch_distrito,ta_entretenimiento.va_nombre ASC');
         if ($paginator == true) {
             if ($per_page != null) {
                  if($page > 0){
@@ -41,7 +41,21 @@ class Entretenimiento_model extends CI_Model{
         
     }
     
+    public function cantidad_random($tipo,$limit,$order){
+        $this->db->cache_off();
+        $this->db->select('ta_entretenimiento.*,ta_tipo_entretenimiento.va_nombre as va_nombre_tipo,ta_ubigeo.ch_distrito')
+                ->from('ta_entretenimiento')
+                ->join('ta_tipo_entretenimiento', 'ta_tipo_entretenimiento.in_id=ta_entretenimiento.ta_tipo_in_id', 'left')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_entretenimiento.ta_ubigeo_in_id', 'left');
+        $this->db->where('ta_entretenimiento.ta_tipo_in_id', $tipo);
+        $this->db->order_by($order);
+        $this->db->limit($limit);
+        $query = $this->db->get();
+        return $query->result_object();
+    }
+    
     public function get_tipos(){
+         $this->db->cache_off();
         $query=$this->db->get('ta_tipo_entretenimiento');
         return $query->result_array();
     }

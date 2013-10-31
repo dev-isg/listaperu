@@ -13,6 +13,7 @@ class Movilidad extends CI_Controller {
         $title= 'Servicio de Movilidades|ListaPeru.com';
         $data['canttaxis']=$this->mobilidad_model->search_mobilidad(null,1);
         $data['cantmudanzas']=$this->mobilidad_model->search_mobilidad(null,2);
+        $data['descripcion']= 'Teléfonos de Mudanzas – Teléfonos de Taxis|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'movilidad/verhomemovilidad', $data, TRUE); 
         $this->template->render();
@@ -21,7 +22,7 @@ class Movilidad extends CI_Controller {
     
    public function index($categoria){
         $this->template->set_template('home');
-        $this->load->helper(array('form','url'));   
+        $this->load->helper(array('form','url'));  
         $this->load->library(array('form_validation','session'));
         $this->load->library('pagination');
        
@@ -89,11 +90,32 @@ class Movilidad extends CI_Controller {
    
         $data['links']=$this->pagination->create_links();
         
+        $movilrandom=$this->mobilidad_model->cantidad_random($tipo,10,'rand()');
+        $auxcant="";
+        foreach ($movilrandom as $movil) {
+            $auxcant.=$movil->va_nombre.'-'.$movil->va_telefono.',';
+        }
+        $posaux=  strrpos($auxcant, ',');
+        
+//        var_dump($movilseo);Exit;
         //SEO
         $title=  ucwords($data['tipo_movilidad']).'|ListaPeru.com';
-//        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
         $this->template->write('title', $title);  
         $this->template->write_view('content', 'movilidad/index', $data, TRUE); 
+        $this->template->write_view('footer', 'templates/footer'); 
+        $this->template->render();
+    }
+    
+    public function vermovilidad($categoria=null,$idmovi=null){
+        $nombre = explode('-', $idmovi); 
+        $id = array_pop($nombre);
+        $movilidad=$this->mobilidad_model->get_descripcion($id);
+//        var_dump($movilidad);exit;
+        $data['movilidad']=$movilidad;
+        $data['nombre']=$nombre;    
+        $data['categoria']=$categoria;
+        $this->template->write_view('content', 'movilidad/vermovilidad', $data, TRUE); 
         $this->template->write_view('footer', 'templates/footer'); 
         $this->template->render();
     }
@@ -113,7 +135,7 @@ class Movilidad extends CI_Controller {
         if($_POST){
                 $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 //                $this->form_validation->set_rules('horario', 'horario', 'required');
-                $this->form_validation->set_rules('direccion', 'direccion', 'required');
+//                $this->form_validation->set_rules('direccion', 'direccion', 'required');
                 $this->form_validation->set_rules('tipo', 'tipo', 'required');
                 $this->form_validation->set_rules('distrito', 'distrito', 'required');
         
@@ -123,6 +145,7 @@ class Movilidad extends CI_Controller {
                     'va_nombre'=>$this->input->post('nombre'),
                     'va_direccion'=>$this->input->post('direccion'),
                     'va_telefono'=>$this->input->post('telefono'),
+                    'va_descripcion'=>$this->input->post('descripcion'),
                     'ta_tipo_in_id'=>$this->input->post('tipo'),
                     'ta_ubigeo_in_id'=>$ubigeo,
                 );

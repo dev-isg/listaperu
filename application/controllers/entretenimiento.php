@@ -19,6 +19,13 @@ class Entretenimiento extends CI_Controller {
         $data['cantbares'] = $this->entretenimiento_model->search_entretenimiento(null, 2);
         $data['cantcines'] = $this->entretenimiento_model->search_entretenimiento(null, 4);
         
+        $tipoentret=$this->entretenimiento_model->get_tipos();
+//        var_dump($tipoentret);Exit;
+        foreach ($tipoentret as $tipo) {
+            $auxcant.='Dirección y Teléfonos de '.ucwords($tipo['va_nombre']).'-';
+        }
+        $posaux=  strrpos($auxcant, '-');
+        $data['descripcion']=  substr($auxcant, 0, $posaux).'|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'entretenimiento/verhomeentretenimiento', $data, TRUE);
         $this->template->render();
@@ -69,6 +76,7 @@ class Entretenimiento extends CI_Controller {
         }
 
         $data['entretenimiento_search'] = $datasearch;
+        $data['total_busqueda'] = $cuantos;
 
         $config['base_url'] = $urlfinal;
         $config['total_rows'] = $cuantos;
@@ -93,7 +101,13 @@ class Entretenimiento extends CI_Controller {
 
         //SEO
         $title = ucwords($data['entret_tipo']) . '|ListaPeru.com';
-//        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
+        $entretecantid=$this->entretenimiento_model->cantidad_random($tipo,10,'rand()');
+        $auxcant=ucwords($data['entret_tipo']).'|';
+        foreach ($entretecantid as $entret) {
+            $auxcant.=$entret->va_direccion.'-'.$entret->ch_distrito.',';
+        }
+        $posaux=  strripos($auxcant, ',');
+        $data['descripcion']=  substr($auxcant,0,$posaux).'|ListaPeru.com';
         $this->template->write('title', $title);
         $this->template->write_view('content', 'entretenimiento/index', $data, TRUE);
         $this->template->write_view('footer', 'templates/footer');
@@ -123,6 +137,7 @@ class Entretenimiento extends CI_Controller {
             $data = array(
                 'va_nombre' => $this->input->post('nombre'),
                 'va_direccion' => $this->input->post('direccion'),
+                'va_telefono' => $this->input->post('telefono'),
                 'ta_tipo_in_id' => $this->input->post('tipo'),
                 'ta_ubigeo_in_id' => $ubigeo,
             );
