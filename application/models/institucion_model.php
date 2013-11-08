@@ -41,6 +41,21 @@ class Institucion_model extends CI_Model{
         
     }
     
+    public function search_institucion_movil($tipo = null, $ubigeo = null) {
+        $this->db->cache_off();
+        $this->db->select('ta_institucion.*,
+            ta_tipo_institucion.va_nombre as nombre_tipo,ta_ubigeo.ch_distrito')
+                ->from('ta_institucion')
+                ->join('ta_tipo_institucion', 'ta_tipo_institucion.in_id=ta_institucion.ta_tipo_in_id', 'left')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_institucion.ta_ubigeo_in_id', 'left');
+        $this->db->where('ta_tipo_in_id', $tipo);
+        $this->db->where('ta_ubigeo.in_id', $ubigeo);
+        $this->db->order_by('ta_ubigeo.ch_distrito,ta_institucion.va_nombre ASC');
+
+        $query = $this->db->get();
+        return $query->result_object();
+    }
+    
     public function get_tipo(){
         $query=$this->db->get('ta_tipo_institucion');
         return $query->result_object();

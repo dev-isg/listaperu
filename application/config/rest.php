@@ -59,7 +59,7 @@ $config['rest_realm'] = 'REST API';
 |	'' = no login required, 'basic' = unsecure login, 'digest' = more secure login
 |
 */
-$config['rest_auth'] = 'digest';//false
+$config['rest_auth'] = false;//'digest';//false
 
 /*
 |--------------------------------------------------------------------------
@@ -163,7 +163,7 @@ $config['rest_database_group'] = 'default';
 |	'keys'
 |
 */
-$config['rest_keys_table'] = 'ta_usuarios';//key
+$config['rest_keys_table'] = 'keys';//'ta_usuarios';//
 
 /*
 |--------------------------------------------------------------------------
@@ -187,7 +187,7 @@ $config['rest_keys_table'] = 'ta_usuarios';//key
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = TRUE;//FALSE;
+$config['rest_enable_keys'] = FALSE;//true
 
 /*
 |--------------------------------------------------------------------------
@@ -198,7 +198,7 @@ $config['rest_enable_keys'] = TRUE;//FALSE;
 | name of the db column that holds the api key value?
 |
 */
-$config['rest_key_column'] = 'va_key';
+$config['rest_key_column'] = 'key';//'va_key';
 
 /*
 |--------------------------------------------------------------------------

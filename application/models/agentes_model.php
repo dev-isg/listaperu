@@ -62,6 +62,19 @@ class Agentes_model extends CI_Model{
         }
         return $auxtipo;
     }
+    
+        public function get_ubigeo_json(){
+        $this->db->select('in_id,in_iddis,ch_distrito')->from('ta_ubigeo')
+                ->where(array('ch_departamento'=>'LIMA','ch_provincia'=>'LIMA'))
+                ->group_by('in_iddis')->order_by('ch_distrito ASC');
+        $query=$this->db->get();
+        $distrito = $query->result_object();
+//        $auxtipo=array();
+//        foreach($distrito as $tipo){
+//            $auxtipo[$tipo['in_id']] = $tipo['ch_distrito'];      
+//        }
+        return $distrito;
+    }
     public function distrito($id) {
         $auxtipo=$this->get_ubigeo();
         foreach($auxtipo as $key=>$value){
@@ -151,6 +164,20 @@ class Agentes_model extends CI_Model{
         } else {
             return $this->db->count_all_results();
         }
+    }
+    
+    public function search_agentes_mobil($banco=null,$ubigeo = null){
+        $this->db->cache_off();
+                $this->db->select('ta_agentes.*,ta_banco.va_nombre as nombre_banco,ta_ubigeo.ch_distrito')
+                ->from('ta_agentes')
+                ->join('ta_banco', 'ta_banco.in_id=ta_agentes.ta_banco_in_id', 'left')
+                ->join('ta_ubigeo', 'ta_ubigeo.in_id=ta_agentes.ta_ubigeo_in_id', 'left');
+            $this->db->where('ta_banco_in_id', $banco);
+            $this->db->where('ta_ubigeo.in_id', $ubigeo);
+            $this->db->order_by('ta_ubigeo.ch_distrito,ta_agentes.va_nombre ASC');
+            $query = $this->db->get();
+//            var_dump($query->result_id->queryString);Exit;
+            return $query->result_object();
     }
     
    public function cantbancoxUbigeo($idbanco, $limit = null,$order='cantagentes DESC') {

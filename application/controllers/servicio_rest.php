@@ -13,8 +13,7 @@ class Servicio_rest extends REST_Controller {
         $this->load->model('agentes_model');
     }
 
-    public function agentes_get() {
-
+    public function agentes_get() {                
         if (!$this->get('id')) {
             //url probar:http://192.168.1.50:8082/servicio_rest/agentes/format/json
             $agentelista = $this->agentes_model->get_agentes();
@@ -23,6 +22,10 @@ class Servicio_rest extends REST_Controller {
 //            http://192.168.1.50:8082/servicio_rest/agentes/id/2033/format/json
             $agentelista = $this->agentes_model->get_ficha_agentes($this->get('id'));
         }
+        
+//            echo "jsonpCallback(".json_encode($agentelista).")";
+//            exit();
+        
         $this->response($agentelista, 200);
         $data = array('returned: ' . $this->get('id'));
         $this->response($data);
@@ -75,6 +78,22 @@ class Servicio_rest extends REST_Controller {
 
         $data = array('returned: ' . $this->post('id'));
         $this->response($data);
+    }
+    
+    public function distrito_get(){
+        $listadistritos=$this->agentes_model->get_ubigeo_json();
+        $this->response($listadistritos, 200);
+    }
+    
+    public function buscaragente_get(){
+       $listaagentes=$this->agentes_model->search_agentes_mobil($this->get('idbank',1),$this->get('id'));
+       if(count($listaagentes)>0){
+       $this->response(array('result'=>$listaagentes,'code'=>'1'),200);
+       }else{
+//           $this->response(array('result'=>0,'msge'=>'no se encontro resultado(s)'),404);
+       $this->response(array('result'=>$listaagentes,'code' => '0'));    
+//       $this->response(array(array('result'=>0,'msge'=>'no se encontro resultado(s)')),404);
+       }
     }
 
     private function _generate_key() {
