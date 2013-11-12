@@ -61,6 +61,7 @@
                                     <th>Nombre</th>
                                     <th>Direccion</th>
                                     <th>Tipo</th>
+                                    <th>Teléfono</th>
                                     <th>Distrito</th>
                                 </tr>
                             </thead>
@@ -69,6 +70,7 @@
                                     <td><?php echo $news_item->va_nombre; ?></td>
                                     <td><?php echo $news_item->va_direccion; ?></td>
                                     <td><?php echo $news_item->va_nombre_tipo; ?></td>
+                                    <td><?php echo $news_item->va_telefono; ?></td>
                                     <td><?php echo $news_item->ch_distrito; ?></td>
                                 </tr>
                             <?php endforeach ?>
